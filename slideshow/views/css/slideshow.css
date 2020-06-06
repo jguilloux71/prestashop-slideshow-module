@@ -1,0 +1,311 @@
+* {
+    border-size: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    height: 400px;
+    background: #aaa;
+}
+
+.tour {
+    position: relative;
+    perspective: 50em;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: #222;
+    overflow: hidden;
+}
+
+.tour ol {
+    list-style: none;
+    position: absolute;
+    bottom: 5px;
+    width: 50%;
+    padding: 0px;
+    margin: 0 25%;
+    text-align: center;
+}
+
+.tour ol li {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: relative;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.tour ol li:after {
+    content: '';
+    pointer-events: none;
+    transition: all .4s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: 0% 0%;
+    display: inline-block;
+    border-radius: 50%;
+    background: white;
+}
+
+.tour ol li.active:after {
+    transform: scale(1) translate(-50%, -50%);
+}
+
+.tour .tour-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.tour .tour-inner .itemsliding {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    left: 0%;
+    transition: transform 0.6s ease-in-out;
+    display: none;
+}
+
+.tour .tour-inner .itemsliding img {
+    width: 100%;
+    height: 100%;
+}
+
+.tour .tour-inner .itemsliding .tour-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.tour .tour-inner .itemsliding .tour-caption h2 {
+    font-weight: bold;
+}
+
+.tour .tour-inner .prevleftsliding {
+    display: block;
+    transform: translate3d(100%, 0, 0);
+}
+
+.tour .tour-inner .nextleftsliding {
+    display: block;
+    transform: translate3d(-100%, 0, 0);
+}
+
+.tour .tour-inner .prevrightsliding {
+    display: block;
+    transform: translate3d(-100%, 0, 0);
+}
+
+.tour .tour-inner .nextrightsliding {
+    display: block;
+    transform: translate3d(100%, 0, 0);
+}
+
+.tour .tour-inner .active {
+    display: block;
+    transform: translate3d(0%, 0, 0);
+}
+
+.tour .tour-inner .itemrolling {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    left: 0%;
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.6s;
+    transform: rotateX(-90deg);
+    transform-origin: bottom center;
+    display: none;
+}
+
+.tour .tour-inner .itemrolling img {
+    width: 100%;
+    height: 100%;
+}
+
+.tour .tour-inner .itemrolling .tour-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.tour .tour-inner .itemrolling .tour-caption h2 {
+    font-weight: bold;
+}
+
+.tour .tour-inner .prevleftrolling {
+    display: block;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+    opacity: 0;
+}
+
+.tour .tour-inner .nextleftrolling {
+    display: block;
+    transform-origin: bottom center;
+    transform: rotateX(90deg);
+    opacity: 1;
+}
+
+.tour .tour-inner .prevrightrolling {
+    display: block;
+    transform-origin: bottom center;
+    transform: rotateX(90deg);
+    opacity: 0;
+}
+
+.tour .tour-inner .nextrightrolling {
+    display: block;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+    opacity: 1;
+}
+
+.tour .tour-inner .active {
+    display: block;
+    transform: rotateX(0deg);
+}
+
+.tour .tour-inner .itemfading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    left: 0%;
+    transition: opacity 0.6s ease-in-out;
+    display: none;
+    opacity: 1;
+}
+
+.tour .tour-inner .itemfading img {
+    width: 100%;
+    height: 100%;
+}
+
+.tour .tour-inner .itemfading .tour-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.tour .tour-inner .itemfading .tour-caption h2 {
+    font-weight: bold;
+}
+
+.tour .tour-inner .prevleftfading,
+.tour .tour-inner .prevrightfading {
+    display: block;
+    opacity: 0;
+}
+
+.tour .tour-inner .nextleftfading,
+.tour .tour-inner .nextrightfading {
+    display: block;
+    opacity: 0;
+}
+
+.tour .tour-inner .active {
+    display: block;
+    opacity: 1;
+}
+
+.tour a.tour-control {
+    position: absolute;
+    top: 0;
+    right: 85%;
+    bottom: 0;
+    left: 0;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tour a.tour-control span {
+    pointer-events: none;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.tour a.tour-control span i {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.tour a.tour-control:hover {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent);
+}
+
+.tour a.tour-control:hover i {
+    color: white;
+}
+
+.tour a.tour-control.right {
+    right: 0%;
+    left: 85%;
+}
+
+.tour a.tour-control.right:hover {
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.35), transparent);
+}
+
+.tour a.tour-control.right:hover i {
+    color: white;
+}
+
+.tour .timeLine {
+    position: absolute;
+    height: 3px;
+    background: red;
+    top: 0px;
+    left: 0px;
+    right: 100%;
+}
+
+.tour .animate {
+    animation-name: timeLine;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0, 0, 0.05, 0.85);
+}
+
+@keyframes timeLine {
+    0% {
+        background: white;
+        right: 100%;
+    }
+    100% {
+        background: red;
+        right: 0%;
+    }
+}
